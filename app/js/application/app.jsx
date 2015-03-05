@@ -1,8 +1,7 @@
-var React         = require('react'),
-    BaseComponent = require('../components/baseComponent.jsx');
+import React from 'react';
+import BaseComponent from '../components/baseComponent.jsx';
 
-
-module.exports = {
+export default {
 
   init: function () {
     React.render(

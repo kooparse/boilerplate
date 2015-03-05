@@ -1,13 +1,12 @@
-var React = require('react');
+import React from 'react';
 
-
-var Component = React.createClass({
+let Component = React.createClass({
 
   render: function () {
-    return <h1>Hello!</h1>
+    return <h1 className="light">Hello!</h1>
   }
 
 });
 
 
-module.exports = Component;
+export default Component;
