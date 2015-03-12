@@ -3,7 +3,11 @@ import React from 'react';
 let Component = React.createClass({
 
   render: function () {
-    return <h1 className="light">Hello!</h1>
+    return (
+      <div className="center p2">
+        <h1 className="light">Hello!</h1>
+      </div>
+    );
   }
 
 });

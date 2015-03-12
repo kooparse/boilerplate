@@ -19,8 +19,8 @@ gulp.task('dev-js', function () {
   return browserify({
     entries: ['./app/js/main.js']
   })
-  .transform('reactify')
   .transform(babelify)
+  .transform('reactify')
   .bundle()
   .pipe(source('bundle.js'))
   .pipe(gulp.dest('./app/js/'));
@@ -39,7 +39,7 @@ gulp.task('dev-css', function () {
 });
 
 gulp.task('nodemon', function () {
-  nodemon({ script: 'server.js', env: { 'NODE_ENV': 'dev' }, ext: 'json js', ignore: ['./app', './node_modules', './build'] })
+  nodemon({ script: 'server.js', env: { 'NODE_ENV': 'dev' }, execMap: { js: 'iojs' }, ext: 'json js', ignore: ['./app', './node_modules', './build'] })
   .on('start', function () {
     console.log('started...');
   })
@@ -49,10 +49,15 @@ gulp.task('nodemon', function () {
 });
 
 gulp.task('watch', function() {
-	gulp.watch(['./app/js/**', './app/public/stylesheets/sass/**', '!./app/js/bundle.js'], ['dev-js', 'dev-css']);
+	gulp.watch(
+    ['./app/js/**',
+    './app/public/stylesheets/sass/**',
+    '!./app/js/bundle.js'
+  ], gulp.parallel('dev-js', 'dev-css')
+  );
 });
 
-gulp.task('default', ['dev-js', 'dev-css', 'nodemon', 'watch']);
+gulp.task('default', gulp.parallel('dev-js', 'dev-css', 'watch', 'nodemon'));
 
 
 /*

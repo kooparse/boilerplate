@@ -1,4 +1,4 @@
-App Boilerplate
+Boilerplate App
 -------
 
 ## Install && Running

@@ -1,4 +1,7 @@
-var express       = require('express'),
+'use strict';
+
+
+let express       = require('express'),
     bodyParser    = require('body-parser'),
     app           = express();
 
